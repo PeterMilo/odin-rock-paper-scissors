@@ -1,0 +1,30 @@
+Rock Paper Scissors (RPS) Algorithm
+
+
+- Take human input: Buttons or Text
+	> 3 buttons
+	> Store chosen value in a variable
+
+
+- Make machine input RPS random
+	> Math random function from 1 to 3, one number RPS option
+	> Store output in variable
+
+
+- Make evaluation logic for RPS
+
+
+- Best of 5 counter
+
+
+- New round function
+
+
+- Declare winner
+
+
+- New game function
+
+
+
+
