@@ -12,19 +12,25 @@ Rock Paper Scissors (RPS) Algorithm
 
 
 - Make evaluation logic for RPS
+	> Make if-else function for wing and ties
 
 
 - Best of 5 counter
-
+	> Variable for human
+	> Variable for computer
+	> Add 1 to winning variable depending on evaluation result
 
 - New round function
+	> Reset function to reset machine and human input after evaluation and counter 
 
 
 - Declare winner
+	> Function that declares first to reach 5 the winner 
+	> Pop-up for new game option
 
 
 - New game function
-
+	> Reset counter
 
 
 
