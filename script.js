@@ -1,6 +1,7 @@
 console.log("Linking works")
 
 let playerChoice = "Placeholder";
+let randomPcInput
 let roundWinner
 let computerScore = 0;
 let playerScore = 0;
@@ -19,23 +20,40 @@ document.querySelector('.buttons')
     if (event.target.matches('button')) {
         let value = event.target.innerHTML;
         playerChoice = value;
-        console.log(playerChoice);
+        console.log(`Player chooses ${playerChoice}`);
     }
-    
+
+
+    getRandomInt(3);
+    console.log(`PC chooses number ${randomPcInput}`)
+
+    choiceEvaluation();
+
+    scoreAddition();
+
+    console.log(`Player score = ${playerScore}`);
+    console.log(`Computer score = ${computerScore}`);
+
+    if (playerScore == 5) {
+      alert("Player wins the game!");
+    } else if (computerScore == 5) {
+      alert("Oh no! Computer wins the game!")
+    } else {
+      return
+    }
+
   });
 
+  
 /*
   Make machine input RPS random
 	> Math random function from 1 to 3, one number RPS option
 	> Store output in variable
 */
 
-let randomPcInput = getRandomInt(3);
-
 function getRandomInt (num) {
-  return Math.floor(Math.random() * num)
+  randomPcInput = Math.floor(Math.random() * num)
 }
-console.log(`PC chooses number ${randomPcInput}`)
 
 
 
@@ -45,12 +63,13 @@ console.log(`PC chooses number ${randomPcInput}`)
 */
 
 function choiceEvaluation (player, computer) {
-  player = "Rock";
+  player = playerChoice;
   computer = randomPcInput;
 
 // If-else statement to evaluate possible outcomes
   if (player == "Rock" && computer == 0) {
     console.log("It's a tie!");
+    roundWinner = "No one";
   } else if (player == "Rock" && computer == 1) {
     console.log("Computer wins!");
     roundWinner = "Computer";
@@ -62,6 +81,7 @@ function choiceEvaluation (player, computer) {
   roundWinner = "Player";
   } else if (player == "Paper" && computer == 1) {
   console.log("It's a tie!");
+  roundWinner = "No one";
   } else if (player == "Paper" && computer == 2) {
     console.log("Computer wins!");
     roundWinner = "Computer";
@@ -73,6 +93,7 @@ function choiceEvaluation (player, computer) {
     roundWinner = "Player";
   } else if (player == "Scissors" && computer == 2) {
       console.log("It's a tie!");
+    roundWinner = "No one";
   }
 }
 
@@ -91,9 +112,24 @@ function scoreAddition () {
     computerScore = computerScore+1;
   } else if (roundWinner == "Player"){
     playerScore = playerScore+1;
+  } else {
+    return
   }
 }
 
 console.log(scoreAddition());
-console.log(playerScore);
-console.log(computerScore);
+
+
+document.querySelector('.new-game-button')
+  .addEventListener('click', () => {
+ 
+console.log("New game button pressed")
+
+gameReset();
+  
+  })
+
+  function gameReset() {
+    computerScore = 0;
+    playerScore = 0;
+  }
