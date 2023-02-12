@@ -1,6 +1,10 @@
 console.log("Linking works")
 
 let playerChoice = "Placeholder";
+let roundWinner
+let computerScore = 0;
+let playerScore = 0;
+
 
 
 
@@ -17,5 +21,79 @@ document.querySelector('.buttons')
         playerChoice = value;
         console.log(playerChoice);
     }
+    
   });
 
+/*
+  Make machine input RPS random
+	> Math random function from 1 to 3, one number RPS option
+	> Store output in variable
+*/
+
+let randomPcInput = getRandomInt(3);
+
+function getRandomInt (num) {
+  return Math.floor(Math.random() * num)
+}
+console.log(`PC chooses number ${randomPcInput}`)
+
+
+
+/* 
+  Make evaluation logic for RPS
+	> Make if-else function for win and ties
+*/
+
+function choiceEvaluation (player, computer) {
+  player = "Rock";
+  computer = randomPcInput;
+
+// If-else statement to evaluate possible outcomes
+  if (player == "Rock" && computer == 0) {
+    console.log("It's a tie!");
+  } else if (player == "Rock" && computer == 1) {
+    console.log("Computer wins!");
+    roundWinner = "Computer";
+  } else if (player == "Rock" && computer == 2) {
+  console.log("You win!");
+  roundWinner = "Player";
+  } else if (player == "Paper" && computer == 0) {
+  console.log("You win!");
+  roundWinner = "Player";
+  } else if (player == "Paper" && computer == 1) {
+  console.log("It's a tie!");
+  } else if (player == "Paper" && computer == 2) {
+    console.log("Computer wins!");
+    roundWinner = "Computer";
+  } else if (player == "Scissors" && computer == 0) {
+    console.log("Computer Wins!");
+    roundWinner = "Computer";
+  } else if (player == "Scissors" && computer == 1) {
+    console.log("You win!");
+    roundWinner = "Player";
+  } else if (player == "Scissors" && computer == 2) {
+      console.log("It's a tie!");
+  }
+}
+
+console.log(choiceEvaluation())
+console.log(roundWinner);
+
+/*
+Best of 5 counter
+	> Variable for human
+	> Variable for computer
+	> Add 1 to winning variable depending on evaluation result
+*/
+
+function scoreAddition () {
+  if (roundWinner == "Computer") {
+    computerScore = computerScore+1;
+  } else if (roundWinner == "Player"){
+    playerScore = playerScore+1;
+  }
+}
+
+console.log(scoreAddition());
+console.log(playerScore);
+console.log(computerScore);

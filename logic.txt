@@ -12,7 +12,7 @@ Rock Paper Scissors (RPS) Algorithm
 
 
 - Make evaluation logic for RPS
-	> Make if-else function for wing and ties
+	> Make if-else function for win and ties
 
 
 - Best of 5 counter
