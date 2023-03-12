@@ -1,11 +1,15 @@
 console.log("Linking works")
 
-let playerChoice = "Placeholder";
+let playerChoice
 let randomPcInput
 let roundWinner
 let computerScore = 0;
 let playerScore = 0;
 
+
+let printPlayerNumber = document.querySelector('#player-score-num').firstChild;
+let printComputerNumber = document.querySelector('#computer-score-num').firstChild;
+let printResultText = document.querySelector('#result-text').firstChild;
 
 
 
@@ -13,10 +17,6 @@ let playerScore = 0;
 // stores value of the button and pushes this value to variable playerChoice
 document.querySelector('.buttons')
   .addEventListener('click', event => {
-    // Commented "let target" is a way of defining the event.target to save for reuse
-    // let target = event.target;
-    // Now we have to define "event.target" this could be shortened and remove "event" if above "let target" was defined.
-    // This is also the case for the "let value" where "event." could be left out of "let target" was defined. 
     if (event.target.matches('button')) {
         let value = event.target.innerHTML;
         playerChoice = value;
@@ -28,11 +28,12 @@ document.querySelector('.buttons')
     console.log(`PC chooses number ${randomPcInput}`)
 
     choiceEvaluation();
-
     scoreAddition();
 
-    console.log(`Player score = ${playerScore}`);
-    console.log(`Computer score = ${computerScore}`);
+    // console.log(`Player score = ${playerScore}`);
+    // console.log(`Computer score = ${computerScore}`);
+
+
 
     if (playerScore == 5) {
       alert("Player wins the game!");
@@ -68,31 +69,22 @@ function choiceEvaluation (player, computer) {
 
 // If-else statement to evaluate possible outcomes
   if (player == "Rock" && computer == 0) {
-    console.log("It's a tie!");
     roundWinner = "No one";
   } else if (player == "Rock" && computer == 1) {
-    console.log("Computer wins!");
     roundWinner = "Computer";
   } else if (player == "Rock" && computer == 2) {
-  console.log("You win!");
   roundWinner = "Player";
   } else if (player == "Paper" && computer == 0) {
-  console.log("You win!");
   roundWinner = "Player";
   } else if (player == "Paper" && computer == 1) {
-  console.log("It's a tie!");
   roundWinner = "No one";
   } else if (player == "Paper" && computer == 2) {
-    console.log("Computer wins!");
     roundWinner = "Computer";
   } else if (player == "Scissors" && computer == 0) {
-    console.log("Computer Wins!");
     roundWinner = "Computer";
   } else if (player == "Scissors" && computer == 1) {
-    console.log("You win!");
     roundWinner = "Player";
   } else if (player == "Scissors" && computer == 2) {
-      console.log("It's a tie!");
     roundWinner = "No one";
   }
 }
@@ -110,10 +102,14 @@ Best of 5 counter
 function scoreAddition () {
   if (roundWinner == "Computer") {
     computerScore = computerScore+1;
+    printComputerNumber.textContent = computerScore;
+    printResultText.textContent = "Computer wins the round!";
   } else if (roundWinner == "Player"){
     playerScore = playerScore+1;
-  } else {
-    return
+    printPlayerNumber.textContent = playerScore;
+    printResultText.textContent = "Player wins the round!";
+  } else if (roundWinner == "No one"){
+    printResultText.textContent = "It's a tie!";
   }
 }
 
@@ -132,4 +128,7 @@ gameReset();
   function gameReset() {
     computerScore = 0;
     playerScore = 0;
+    printPlayerNumber.textContent = 0;
+    printComputerNumber.textContent = 0;
+    printResultText.textContent = "Who will win this time?";
   }

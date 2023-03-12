@@ -1,0 +1,30 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    display: flex;
+   justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.score-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.inner-score-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-game {
+    display: flex;
+    justify-content: center;
+}
